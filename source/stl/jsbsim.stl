@@ -1,0 +1,6 @@
+package jsbsim;
+
+class JSBSimAircraft
+{
+  var description : string [static];
+}
