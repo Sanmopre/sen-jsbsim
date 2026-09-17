@@ -23,6 +23,8 @@
 #include <thread>
 #include <vector>
 
+#include "rpr/rpr-physical_v2.0.xml.h"
+
 namespace {
 
 constexpr SDL_JoystickID kNoJoystick = 0;
@@ -335,7 +337,7 @@ void ApplyJoystickControls(JSBSim::FGFDMExec& fdmExec, const std::vector<float>&
         }
         const float normalized = NormalizeAxis(axisValues[static_cast<std::size_t>(mapping.axisIndex)],
                                                 mapping.bipolar, mapping.invert, mapping.deadzone);
-        fdmExec.SetPropertyValue(mapping.property, normalized);
+        fdmExec.SetPropertyValue(mapping.property, static_cast<double>(normalized));
     }
 
     for (const auto& mapping : kButtonMappings) {
